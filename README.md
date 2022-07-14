@@ -15,7 +15,7 @@
 ### [Project Page](https://frozenburning.github.io/projects/relighting4d) | [Video](https://youtu.be/NayAw89qtsY) | [Paper]()
 
 <tr>
-    <img src="https://frozenburning.github.io/projects/relighting4d/img/teaser_tn.gif" width="100%"/>
+    <img src="https://github.com/FrozenBurning/FrozenBurning.github.io/blob/master/projects/relighting4d/img/teaser.gif" width="100%"/>
 </tr>
 </div>
 
