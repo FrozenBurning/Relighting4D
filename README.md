@@ -1,11 +1,23 @@
-# Relighting4D: Neural Relightable Human from Videos
+<div align="center">
+
+<h1>Relighting4D: Neural Relightable Human from Videos</h1>
+
+<div>
+    <a href='https://frozenburning.github.io/' target='_blank'>Zhaoxi Chen</a>&emsp;
+    <a href='https://liuziwei7.github.io/' target='_blank'>Ziwei Liu</a>
+</div>
+<div>
+    S-Lab, Nanyang Technological University
+</div>
+
+<strong><a href='https://eccv2022.ecva.net/' target='_blank'>ECCV 2022</a></strong>
+
 ### [Project Page](https://frozenburning.github.io/projects/relighting4d) | [Video](https://youtu.be/NayAw89qtsY) | [Paper]()
 
-![teaser](https://frozenburning.github.io/projects/relighting4d/img/teaser.gif)
-
-> [Relighting4D: Neural Relightable Human from Videos](https://frozenburning.github.io/projects/relighting4d)  
-> [Zhaoxi Chen](https://frozenburning.github.io/), [Ziwei Liu](https://liuziwei7.github.io/)
-> ECCV 2022
+<tr>
+    <img src="https://frozenburning.github.io/projects/relighting4d/img/teaser.gif" width="100%"/>
+</tr>
+</div>
 
 ## Citation
 
