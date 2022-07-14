@@ -103,17 +103,8 @@ class Visualizer:
         cv2.imwrite(os.path.join(img_root, '{:04d}_rgbpred.png'.format(index)), img_pred * 255)
         cv2.imwrite(os.path.join(img_root, '{:04d}_albedo.png'.format(index)), output_albedo * 255)
         cv2.imwrite(os.path.join(img_root, '{:04d}_albedo_gamma.png'.format(index)), output_albedo_gamma * 255)
-
-        cv2.imwrite(os.path.join(img_root, '{:04d}_brdf.png'.format(index)), output_brdf_pred * 255)
-
-
-
-        cv2.imwrite(os.path.join(img_root, '{:04d}_normal.png'.format(index)), output_normal_map * 255)
         cv2.imwrite(os.path.join(img_root, '{:04d}_normal_pred.png'.format(index)), output_normal_map_pred * 255)
-
         cv2.imwrite(os.path.join(img_root, '{:04d}_alpha.png'.format(index)), output_alpha_map * 255)
-        cv2.imwrite(os.path.join(img_root, '{:04d}_mask.png'.format(index)), mask_at_box * 255)
-
         cv2.imwrite(os.path.join(img_root, '{:04d}_lvis_pred.png'.format(index)), np.mean(output_lvis_map_pred,axis=2) * 255)
 
         for hdr_i in range(num_hdr):
