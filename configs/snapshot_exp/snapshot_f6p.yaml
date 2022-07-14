@@ -1,0 +1,26 @@
+task: 'if_nerf'
+gpus: [0]
+
+parent_cfg: 'configs/snapshot_exp/snapshot_f3c.yaml'
+
+train_dataset:
+    data_root: 'data/people_snapshot/female-6-plaza'
+    human: 'female-6-plaza'
+    ann_file: 'data/people_snapshot/female-6-plaza/params.npy'
+    split: 'train'
+
+test_dataset:
+    data_root: 'data/people_snapshot/female-6-plaza'
+    human: 'female-6-plaza'
+    ann_file: 'data/people_snapshot/female-6-plaza/params.npy'
+    split: 'test'
+
+vis_relight_cfg:
+    smpl_model_ckpt: 'data/trained_model/if_nerf/female6p/latest.pth'
+
+train_relight_cfg:
+    smpl_model_ckpt: 'data/trained_model/if_nerf/female6p/latest.pth'
+
+# data options
+ratio: 1.
+num_train_frame: 240

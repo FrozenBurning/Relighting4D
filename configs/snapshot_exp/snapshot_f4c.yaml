@@ -1,0 +1,28 @@
+task: 'if_nerf'
+gpus: [0]
+
+parent_cfg: 'configs/snapshot_exp/snapshot_f3c.yaml'
+
+train_dataset:
+    data_root: 'data/people_snapshot/female-4-casual'
+    human: 'female-4-casual'
+    ann_file: 'data/people_snapshot/female-4-casual/params.npy'
+    split: 'train'
+
+test_dataset:
+    data_root: 'data/people_snapshot/female-4-casual'
+    human: 'female-4-casual'
+    ann_file: 'data/people_snapshot/female-4-casual/params.npy'
+    split: 'test'
+
+
+vis_relight_cfg:
+    smpl_model_ckpt: 'data/trained_model/if_nerf/female4c/latest.pth'
+
+train_relight_cfg:
+    smpl_model_ckpt: 'data/trained_model/if_nerf/female4c/latest.pth'
+
+# data options
+ratio: 1.
+num_train_frame: 200
+begin_ith_frame: 10
