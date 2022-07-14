@@ -15,7 +15,7 @@
 ### [Project Page](https://frozenburning.github.io/projects/relighting4d) | [Video](https://youtu.be/NayAw89qtsY) | [Paper]()
 
 <tr>
-    <img src="https://frozenburning.github.io/projects/relighting4d/img/teaser.gif" width="100%"/>
+    <img src="https://frozenburning.github.io/projects/relighting4d/img/teaser_tn.gif" width="100%"/>
 </tr>
 </div>
 
@@ -103,9 +103,13 @@ Here, we take the rendering on `female-3-casual` as an example.
     python run.py --type relight_npose --cfg_file configs/snapshot_exp/snapshot_f3c.yaml exp_name female3c_relight task relighte2e vis_relight True vis_relight_npose True ratio 0.5 pyramid False gpus "0,"
     ```
 The results of rendering are located at `/data/render/`. For example, rendering results with [courtyard HDR environment](light-probes/courtyard.hdr) are shown as follows:
+
+<table>
 <tr>
-    <td><img src="https://frozenburning.github.io/projects/relighting4d/img/nview.gif" width="50%"/><img src="https://frozenburning.github.io/projects/relighting4d/img/npose.gif" width="50%"/></td>
+    <td align='center' width='50%'><img src="https://frozenburning.github.io/projects/relighting4d/img/nview.gif" width="100%"/></td>
+    <td align='center' width='50%'><img src="https://frozenburning.github.io/projects/relighting4d/img/npose.gif" width="100%"/></td>
 </tr>
+</table>
 
 ## Acknowledgements
 This work is supported by the National Research Foundation, Singapore under its AI Singapore Programme, NTU NAP, MOE AcRF Tier 2 (T2EP20221-0033), and under the RIE2020 Industry Alignment Fund - Industry Collaboration Projects (IAF-ICP) Funding Initiative, as well as cash and in-kind contribution from the industry partner(s).
