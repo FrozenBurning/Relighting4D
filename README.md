@@ -12,7 +12,7 @@
 
 <strong><a href='https://eccv2022.ecva.net/' target='_blank'>ECCV 2022</a></strong>
 
-### [Project Page](https://frozenburning.github.io/projects/relighting4d) | [Video](https://youtu.be/NayAw89qtsY) | [Paper]()
+### [Project Page](https://frozenburning.github.io/projects/relighting4d) | [Video](https://youtu.be/NayAw89qtsY) | [Paper](https://arxiv.org/abs/2207.07104)
 
 <tr>
     <img src="https://github.com/FrozenBurning/FrozenBurning.github.io/blob/master/projects/relighting4d/img/teaser.gif" width="100%"/>
