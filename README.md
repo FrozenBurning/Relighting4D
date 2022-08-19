@@ -19,6 +19,14 @@
 </tr>
 </div>
 
+## Updates
+
+[08/2022] Model weights released. [![Google Drive](https://img.shields.io/badge/Google%20Drive-4285F4?style=for-the-badge&logo=googledrive&logoColor=yellow)](https://drive.google.com/drive/folders/14pvUxVNCrKEFYjy3h2nc_i1Y7rrcKq2q?usp=sharing)
+
+[07/2022] Paper uploaded to arXiv. [![arXiv](https://img.shields.io/badge/arXiv-2207.07104-b31b1b.svg)](https://arxiv.org/abs/2207.07104)
+
+[07/2022] Code released.
+
 ## Citation
 
 If you find our work useful for your research, please consider citing this paper:
@@ -90,6 +98,8 @@ Take the training on `female-3-casual` as an example.
 
 ## Rendering
 To relight a human performer from the trained video, our model requires an HDR environment map as input. We provide 8 HDR maps at [light-probes](light-probes/). You can also use your own HDRIs or download some samples from [Poly Haven](https://polyhaven.com/hdris).
+
+You are welcome to download our checkpoints from [Google Drive](https://drive.google.com/drive/folders/14pvUxVNCrKEFYjy3h2nc_i1Y7rrcKq2q?usp=sharing). 
 
 Here, we take the rendering on `female-3-casual` as an example. 
 

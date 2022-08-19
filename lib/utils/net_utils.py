@@ -375,9 +375,38 @@ def load_network(net, model_dir, resume=True, epoch=-1, strict=True):
 
     print('load model: {}'.format(model_path))
     pretrained_model = torch.load(model_path, map_location='cpu')
+    pretrained_model = transform_spconv1_spconv2(pretrained_model)
     net.load_state_dict(pretrained_model['net'], strict=strict)
     return pretrained_model['epoch'] + 1
 
+def transform_spconv1_spconv2(pretrained_model):
+    for key in pretrained_model['net'].keys():
+        if 'xyzc_net' in key and 'weight' in key and pretrained_model['net'][key].dim() ==5:
+            if check_spconv_conv_version(pretrained_model['net'][key]):
+                # checkpoints with spconv 1.x
+                pretrained_model['net'][key] = pretrained_model['net'][key].permute([4,0,1,2,3])
+            else:
+                # checkpoitns with spconv 2.x
+                pass
+
+    for key in pretrained_model['optim']['state'].keys():
+        if pretrained_model['optim']['state'][key]['exp_avg'].dim()==5:
+            if check_spconv_conv_version(pretrained_model['optim']['state'][key]['exp_avg']):
+                # checkpoints with spconv 1.x
+                pretrained_model['optim']['state'][key]['exp_avg'] = pretrained_model['optim']['state'][key]['exp_avg'].permute([4,0,1,2,3])
+                pretrained_model['optim']['state'][key]['exp_avg_sq'] = pretrained_model['optim']['state'][key]['exp_avg_sq'].permute([4,0,1,2,3])
+            else:
+                # checkpoitns with spconv 2.x
+                pass
+    return pretrained_model
+
+def check_spconv_conv_version(param):
+    if param.shape[0] == param.shape[1] and param.shape[1] == param.shape[2]:
+        # spconv 1.x
+        return True
+    else:
+        # spconv 2.x
+        return False
 
 def remove_net_prefix(net, prefix):
     net_ = OrderedDict()

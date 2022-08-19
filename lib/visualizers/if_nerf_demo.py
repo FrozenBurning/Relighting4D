@@ -1,19 +1,8 @@
-import matplotlib.pyplot as plt
 import numpy as np
-from numpy.random import normal
 from lib.config import cfg
 import cv2
 import os
 from termcolor import colored
-from io import BytesIO
-
-def save_npz(dict_, path):
-    """The extra hassle is for Google infra.
-    """
-    with open(path, 'wb') as h:
-        io_buffer = BytesIO()
-        np.savez(io_buffer, **dict_)
-        h.write(io_buffer.getvalue())
 
 class Visualizer:
     def __init__(self):
@@ -65,18 +54,12 @@ class Visualizer:
         img_hdr_relit = img_hdr_relit[..., [2, 1, 0]]
 
         output_albedo = np.zeros((H, W, 3))
-        output_albedo_gamma = np.zeros((H, W, 3))
 
-        albedo_gamma = albedo ** (1/ 2.2)
         albedo = self.alpha_blend(albedo, alpha_map[:, None], np.zeros_like(albedo))
-        albedo_gamma = self.alpha_blend(albedo_gamma, alpha_map[:, None], np.zeros_like(albedo_gamma))
         output_albedo[mask_at_box] = albedo
         output_albedo = output_albedo[..., [2, 1, 0]]
-        output_albedo_gamma[mask_at_box] = albedo_gamma
-        output_albedo_gamma = output_albedo_gamma[..., [2, 1, 0]]
 
         output_alpha_map = np.zeros((H, W, 1))
-        output_normal_map = np.zeros((H, W, 3))
         output_normal_map_pred = np.zeros((H, W, 3))
         output_lvis_map_pred = np.zeros((H, W, lvis_pred.shape[-1]))
         output_brdf_pred = np.ones((H, W, brdf_pred.shape[-1]))
@@ -100,12 +83,11 @@ class Visualizer:
             cfg.exp_name)
         os.system('mkdir -p {}'.format(img_root))
         index = batch['idx'].item()
-        cv2.imwrite(os.path.join(img_root, '{:04d}_rgbpred.png'.format(index)), img_pred * 255)
+        cv2.imwrite(os.path.join(img_root, '{:04d}_rgb.png'.format(index)), img_pred * 255)
         cv2.imwrite(os.path.join(img_root, '{:04d}_albedo.png'.format(index)), output_albedo * 255)
-        cv2.imwrite(os.path.join(img_root, '{:04d}_albedo_gamma.png'.format(index)), output_albedo_gamma * 255)
-        cv2.imwrite(os.path.join(img_root, '{:04d}_normal_pred.png'.format(index)), output_normal_map_pred * 255)
+        cv2.imwrite(os.path.join(img_root, '{:04d}_normal.png'.format(index)), output_normal_map_pred * 255)
         cv2.imwrite(os.path.join(img_root, '{:04d}_alpha.png'.format(index)), output_alpha_map * 255)
-        cv2.imwrite(os.path.join(img_root, '{:04d}_lvis_pred.png'.format(index)), np.mean(output_lvis_map_pred,axis=2) * 255)
+        cv2.imwrite(os.path.join(img_root, '{:04d}_lvis.png'.format(index)), np.mean(output_lvis_map_pred,axis=2) * 255)
 
         for hdr_i in range(num_hdr):
             cv2.imwrite(os.path.join(img_root, '{:04d}_{:01d}_hdr_relit.png'.format(index, hdr_i)), img_hdr_relit[:, :, hdr_i, :]*255)
@@ -114,7 +96,7 @@ class Visualizer:
         os.system('mkdir -p {}'.format(vis_out))
         olats = [27, 91, 149, 200, 288, 333, 398, 488]
         for i in range(num_olat):
-            cv2.imwrite(os.path.join(vis_out, '{:04d}_lvis_pred.png'.format(olats[i])), output_lvis_map_pred[:,:,olats[i]] * 255)
+            cv2.imwrite(os.path.join(vis_out, '{:04d}_lvis.png'.format(olats[i])), output_lvis_map_pred[:,:,olats[i]] * 255)
             cv2.imwrite(os.path.join(vis_out, '{:04d}_relit.png'.format(olats[i])), img_relit[:, :, i, :]* 255)
 
 
