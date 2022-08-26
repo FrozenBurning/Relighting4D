@@ -37,7 +37,6 @@ class Trainer(object):
     def train(self, epoch, data_loader, optimizer, recorder):
         max_iter = len(data_loader)
         self.network.train()
-        torch.autograd.set_detect_anomaly(True)
         end = time.time()
         for iteration, batch in enumerate(data_loader):
             data_time = time.time() - end
