@@ -386,7 +386,7 @@ def transform_spconv1_spconv2(pretrained_model):
                 # checkpoints with spconv 1.x
                 pretrained_model['net'][key] = pretrained_model['net'][key].permute([4,0,1,2,3])
             else:
-                # checkpoitns with spconv 2.x
+                # checkpoints with spconv 2.x
                 pass
 
     for key in pretrained_model['optim']['state'].keys():
@@ -396,7 +396,7 @@ def transform_spconv1_spconv2(pretrained_model):
                 pretrained_model['optim']['state'][key]['exp_avg'] = pretrained_model['optim']['state'][key]['exp_avg'].permute([4,0,1,2,3])
                 pretrained_model['optim']['state'][key]['exp_avg_sq'] = pretrained_model['optim']['state'][key]['exp_avg_sq'].permute([4,0,1,2,3])
             else:
-                # checkpoitns with spconv 2.x
+                # checkpoints with spconv 2.x
                 pass
     return pretrained_model
 

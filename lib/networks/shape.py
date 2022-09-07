@@ -41,10 +41,12 @@ class Network(nn.Module):
         mlp_skip_at = cfg.mlp_skip_at
         net = nn.ModuleDict()
         smpl_feature_dim = 0
-        assert cfg.smpl_model_ckpt
         net['neuralbody'] = NeuralBody()
-        net['neuralbody'].load_state_dict(torch.load(cfg.smpl_model_ckpt)['net'])
         net['neuralbody'].eval()
+        if cfg.train_relight:
+            # only load from auxiliary field during training
+            assert cfg.smpl_model_ckpt
+            net['neuralbody'].load_state_dict(torch.load(cfg.smpl_model_ckpt)['net'])
         for param in net['neuralbody'].parameters():
             param.requires_grad = False
         net['latent_fc'] = nn.Linear(384, 256)
